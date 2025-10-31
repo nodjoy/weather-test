@@ -36,6 +36,7 @@ coverage
 __screenshots__/
 
 # 密钥
+.env
 .env.local
 *.pem
 hefeng_private.pem
