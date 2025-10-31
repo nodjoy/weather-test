@@ -1,4 +1,5 @@
 import {openWeatherAPI} from '@/utils/http'
+import httpInstance from "@/utils/http.js"
 export const AQIApi = {
   getAQIInfo(lat, lon) {
     console.log(lat, lon);
@@ -7,12 +8,13 @@ export const AQIApi = {
       console.error('AQIapi参数必须是number!')
       return Promise.reject(new Error('经纬度不能为空'))
     }
-    return openWeatherAPI({
-      url: '/air_pollution',
-      params: {
-        lat: lat,
-        lon: lon
-      }
+    return httpInstance({
+      // url: '/air_pollution',
+      url: `/airquality/v1/current/${lat}/${lon}`,
+      // params: {
+      //   lat: lat,
+      //   lon: lon
+      // }
     })
   },
 }

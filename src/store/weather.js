@@ -9,6 +9,8 @@ export const useWeatherStore = defineStore('weather', () => {
   const weatherHoursInfo = ref([])
   const weatherDaysInfo = ref([])
   const airQualityInfo = ref([])
+
+  // console.log('🌤️ 正在获取天气数据...',AQIApi.getAQIInfo());
   const getWeather = async () => {
     try {
       const apiCallbacks = {

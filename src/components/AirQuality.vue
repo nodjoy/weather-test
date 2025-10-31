@@ -36,6 +36,8 @@ import { useWeatherStore } from '@/store/weather'
 const weatherStore = useWeatherStore()
 const airQualityIndex = computed(() =>  weatherStore.airQualityInfo?.[0]?.components.pm2_5)
 
+console.log('空气质量信息:', weatherStore.airQualityInfo);
+
 // 污染物配置
 const pollutantConfigs = [
   { name: 'PM2.5', key: 'pm2_5', unit: 'μg/m³', max: 75 },

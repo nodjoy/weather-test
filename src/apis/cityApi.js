@@ -11,7 +11,9 @@ export const cityApi = {
     return httpInstance({
       url: '/geo/v2/city/lookup',
       params: {
-        location: location.trim()
+        location: location.trim(),
+        // vue: 1,
+        callback: 0
       }
     })
   }

@@ -62,7 +62,8 @@ export default defineConfig(({ mode }) => {
         },
         // OpenWeatherMap 代理
         '/openweather': {
-          target: 'http://api.openweathermap.org',
+          // target: 'http://api.openweathermap.org',
+          target: 'https://833jdct35.re.qweatherapi.com',
           changeOrigin: true,
           rewrite: (path) => path.replace(/^\/openweather/, '/data/2.5')
         }
