@@ -1,0 +1,191 @@
+{
+  "id": "5045081",
+  "name": "weather-forecast",
+  "font_family": "iconfont",
+  "css_prefix_text": "icon-",
+  "description": "",
+  "glyphs": [
+    {
+      "icon_id": "5996705",
+      "name": "风",
+      "font_class": "wind",
+      "unicode": "e6eb",
+      "unicode_decimal": 59115
+    },
+    {
+      "icon_id": "5996728",
+      "name": "湿度",
+      "font_class": "humidity",
+      "unicode": "e6f7",
+      "unicode_decimal": 59127
+    },
+    {
+      "icon_id": "15449220",
+      "name": "天气图标_中雨",
+      "font_class": "tianqitubiao_zhongyu",
+      "unicode": "e612",
+      "unicode_decimal": 58898
+    },
+    {
+      "icon_id": "15449221",
+      "name": "天气图标_多云",
+      "font_class": "tianqitubiao_duoyun",
+      "unicode": "e613",
+      "unicode_decimal": 58899
+    },
+    {
+      "icon_id": "15449222",
+      "name": "天气图标_大雪",
+      "font_class": "tianqitubiao_daxue",
+      "unicode": "e614",
+      "unicode_decimal": 58900
+    },
+    {
+      "icon_id": "15449223",
+      "name": "天气图标_晴",
+      "font_class": "tianqitubiao_qing",
+      "unicode": "e615",
+      "unicode_decimal": 58901
+    },
+    {
+      "icon_id": "15449224",
+      "name": "天气图标_雷阵雨",
+      "font_class": "tianqitubiao_leizhenyu",
+      "unicode": "e616",
+      "unicode_decimal": 58902
+    },
+    {
+      "icon_id": "15449225",
+      "name": "天气图标_大雨",
+      "font_class": "tianqitubiao_dayu",
+      "unicode": "e617",
+      "unicode_decimal": 58903
+    },
+    {
+      "icon_id": "15449226",
+      "name": "天气图标_阴",
+      "font_class": "tianqitubiao_yin",
+      "unicode": "e618",
+      "unicode_decimal": 58904
+    },
+    {
+      "icon_id": "15449227",
+      "name": "天气图标_大风",
+      "font_class": "tianqitubiao_dafeng",
+      "unicode": "e619",
+      "unicode_decimal": 58905
+    },
+    {
+      "icon_id": "15449228",
+      "name": "天气图标_中雪",
+      "font_class": "tianqitubiao_zhongxue",
+      "unicode": "e61a",
+      "unicode_decimal": 58906
+    },
+    {
+      "icon_id": "15449229",
+      "name": "天气图标_雨夹雪",
+      "font_class": "tianqitubiao_yujiaxue",
+      "unicode": "e61b",
+      "unicode_decimal": 58907
+    },
+    {
+      "icon_id": "15449230",
+      "name": "天气图标_小雨",
+      "font_class": "tianqitubiao_xiaoyu",
+      "unicode": "e61c",
+      "unicode_decimal": 58908
+    },
+    {
+      "icon_id": "15449231",
+      "name": "天气图标_小雪",
+      "font_class": "tianqitubiao_xiaoxue",
+      "unicode": "e61d",
+      "unicode_decimal": 58909
+    },
+    {
+      "icon_id": "15474962",
+      "name": "天气图标_雷电",
+      "font_class": "tianqitubiao_leidian",
+      "unicode": "e61e",
+      "unicode_decimal": 58910
+    },
+    {
+      "icon_id": "15474963",
+      "name": "天气图标_龙卷风",
+      "font_class": "tianqitubiao_longjuanfeng",
+      "unicode": "e620",
+      "unicode_decimal": 58912
+    },
+    {
+      "icon_id": "15474964",
+      "name": "天气图标_雷阵雨夹雪",
+      "font_class": "tianqitubiao_leizhenyujiaxue",
+      "unicode": "e621",
+      "unicode_decimal": 58913
+    },
+    {
+      "icon_id": "15474965",
+      "name": "天气图标_台风",
+      "font_class": "tianqitubiao_taifeng",
+      "unicode": "e622",
+      "unicode_decimal": 58914
+    },
+    {
+      "icon_id": "15474966",
+      "name": "天气图标_强沙尘暴",
+      "font_class": "tianqitubiao_qiangshachenbao",
+      "unicode": "e623",
+      "unicode_decimal": 58915
+    },
+    {
+      "icon_id": "15474967",
+      "name": "天气图标_雾霾",
+      "font_class": "tianqitubiao_wumai",
+      "unicode": "e624",
+      "unicode_decimal": 58916
+    },
+    {
+      "icon_id": "15474968",
+      "name": "天气图标_晚多云",
+      "font_class": "tianqitubiao_wanduoyun",
+      "unicode": "e625",
+      "unicode_decimal": 58917
+    },
+    {
+      "icon_id": "15474969",
+      "name": "天气图标_冰雹",
+      "font_class": "tianqitubiao_bingbao",
+      "unicode": "e626",
+      "unicode_decimal": 58918
+    },
+    {
+      "icon_id": "15474970",
+      "name": "天气图标_沙尘暴",
+      "font_class": "tianqitubiao_shachenbao",
+      "unicode": "e627",
+      "unicode_decimal": 58919
+    },
+    {
+      "icon_id": "15474972",
+      "name": "天气图标_雾",
+      "font_class": "tianqitubiao_wu",
+      "unicode": "e628",
+      "unicode_decimal": 58920
+    },
+    {
+      "icon_id": "15474973",
+      "name": "天气图标_晚晴",
+      "font_class": "tianqitubiao_wanqing",
+      "unicode": "e629",
+      "unicode_decimal": 58921
+    },
+    {
+      "icon_id": "15474974",
+      "name": "天气图标_浮尘",
+      "font_class": "tianqitubiao_fuchen",
+      "unicode": "e62a",
+      "unicode_decimal": 58922
+    }
+  ]
+}
