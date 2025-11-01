@@ -2,15 +2,13 @@ import { defineStore } from "pinia";
 import { weatherApi } from '../apis/weatherApi';
 import { weatherCacheManager } from '@/utils/weatherCacheManager'
 import { ref, } from 'vue'
-import { AQIApi } from "@/apis/AQIApi";
+// import { AQIApi } from "@/apis/AQIApi";
 import {cityApi} from '@/apis/cityApi'
 export const useWeatherStore = defineStore('weather', () => {
   const weatherNowInfo = ref([])
   const weatherHoursInfo = ref([])
   const weatherDaysInfo = ref([])
   const airQualityInfo = ref([])
-
-  // console.log('🌤️ 正在获取天气数据...',AQIApi.getAQIInfo());
   const getWeather = async () => {
     try {
       const apiCallbacks = {
@@ -18,7 +16,7 @@ export const useWeatherStore = defineStore('weather', () => {
         getWeatherNowInfo: weatherApi.getWeatherNowInfo,
         getWeatherHoursInfo: weatherApi.getWeatherHoursInfo,
         getWeatherDaysInfo: weatherApi.getWeatherDaysInfo,
-        getAQINowInfo:AQIApi.getAQIInfo
+        // getAQINowInfo:AQIApi.getAQIInfo
       }
 
       const weatherData = await weatherCacheManager.getWeatherWithCache(apiCallbacks);
@@ -30,7 +28,7 @@ export const useWeatherStore = defineStore('weather', () => {
       weatherDaysInfo.value = weatherData.days || [];
       airQualityInfo.value = weatherData.aqi || [];
 
-      console.log(weatherData.fromCache ? '📦 使用缓存数据' : '🌤️ 使用新数据');
+      // console.log(weatherData.fromCache ? '📦 使用缓存数据' : '🌤️ 使用新数据');
 
     } catch (error) {
       console.error('获取天气数据失败:', error);

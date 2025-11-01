@@ -26,14 +26,14 @@ const loadWeatherData = async (cityName) => {
   showLoading.value = false;
   try {
     const data = await fetchCityAndWeather(cityName);
-    console.log(data);
+    // console.log(data);
     const hasData = computed(() => {
      return weatherStore.weatherNowInfo?.length > 0 ||
         weatherStore.weatherDaysInfo?.length > 0 ||
         weatherStore.weatherHoursInfo?.length > 0
     })
     showLoading.value = hasData;
-    console.log(hasData.value);
+    // console.log(hasData.value);
 
   } catch (error) {
     console.error('加载数据失败:', error);

@@ -66,6 +66,11 @@ export default defineConfig(({ mode }) => {
           target: 'https://833jdct35.re.qweatherapi.com',
           changeOrigin: true,
           rewrite: (path) => path.replace(/^\/openweather/, '/data/2.5')
+        },
+        '/api': {
+          target: `http://localhost:4000`,
+          // changeOrigin: true,
+          // rewrite: (path) => path.replace(/^\/api/, '')
         }
       }
     }

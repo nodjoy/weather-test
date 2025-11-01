@@ -14,7 +14,7 @@
         </el-container>
       </el-main>
       <el-aside style="width: 16vw; display: flex;flex-direction:column;justify-content: space-between;align-items: center;">
-        <AirQuality/>
+        <AirQuality />
         <Loading/>
       </el-aside>
     </el-container>

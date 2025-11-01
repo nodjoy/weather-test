@@ -25,16 +25,16 @@ class SimpleTokenManager {
       throw new Error(`缺少环境变量: ${missingVars.join(', ')}`);
     }
 
-    console.log('✅ 环境变量检查通过');
+    // console.log('✅ 环境变量检查通过');
   }
 
   async generateToken() {
     try {
-      console.log('🔧 开始生成 Token...', {
-        hasPrivateKey: !!this.config.privateKey,
-        keyId: this.config.keyId,
-        projectId: this.config.projectId
-      });
+      // console.log('🔧 开始生成 Token...', {
+      //   hasPrivateKey: !!this.config.privateKey,
+      //   keyId: this.config.keyId,
+      //   projectId: this.config.projectId
+      // });
 
       // 检查私钥格式
       if (!this.config.privateKey.startsWith('-----BEGIN PRIVATE KEY-----')) {
@@ -42,12 +42,12 @@ class SimpleTokenManager {
       }
 
       const privateKey = await importPKCS8(this.config.privateKey, 'EdDSA');
-      console.log('✅ 私钥导入成功');
+      // console.log('✅ 私钥导入成功');
 
       const iat = Math.floor(Date.now() / 1000) - 30;
       const exp = iat + 3600;
 
-      console.log('📝 创建 JWT payload:', { iat, exp });
+      // console.log('📝 创建 JWT payload:', { iat, exp });
 
       const token = await new SignJWT({
         sub: this.config.projectId,
@@ -63,10 +63,10 @@ class SimpleTokenManager {
       this.currentToken = token;
       this.tokenExpiry = exp * 1000;
 
-      console.log('✅ Token生成成功', {
-        tokenLength: token.length,
-        expiry: new Date(this.tokenExpiry).toISOString()
-      });
+      // console.log('✅ Token生成成功', {
+      //   tokenLength: token.length,
+      //   expiry: new Date(this.tokenExpiry).toISOString()
+      // });
 
       return token;
     } catch (error) {
@@ -81,12 +81,12 @@ class SimpleTokenManager {
 
   isTokenValid() {
     const isValid = this.currentToken && Date.now() < this.tokenExpiry;
-    console.log('🔍 Token有效性检查:', {
-      hasToken: !!this.currentToken,
-      expiry: this.tokenExpiry ? new Date(this.tokenExpiry).toISOString() : null,
-      currentTime: new Date().toISOString(),
-      isValid
-    });
+    // console.log('🔍 Token有效性检查:', {
+    //   hasToken: !!this.currentToken,
+    //   expiry: this.tokenExpiry ? new Date(this.tokenExpiry).toISOString() : null,
+    //   currentTime: new Date().toISOString(),
+    //   isValid
+    // });
     return isValid;
   }
 
@@ -96,12 +96,12 @@ class SimpleTokenManager {
       console.error("Web Crypto API 不可用！需要 HTTPS 环境");
       // 降级方案：改用服务器端生成 token
     }
-    console.log('🔑 获取 Token...');
+    // console.log('🔑 获取 Token...');
     if (this.isTokenValid()) {
-      console.log('✅ 使用缓存 Token');
+      // console.log('✅ 使用缓存 Token');
       return this.currentToken;
     }
-    console.log('🔄 生成新 Token');
+    // console.log('🔄 生成新 Token');
     return await this.generateToken();
   }
 }

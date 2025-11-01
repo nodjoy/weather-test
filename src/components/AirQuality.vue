@@ -31,26 +31,25 @@
 </template>
 
 <script setup>
-import { ref, computed, onMounted, watch } from 'vue'
-import { useWeatherStore } from '@/store/weather'
-const weatherStore = useWeatherStore()
-const airQualityIndex = computed(() =>  weatherStore.airQualityInfo?.[0]?.components.pm2_5)
+import { ref, computed, onMounted, watch,reactive } from 'vue'
 
-console.log('空气质量信息:', weatherStore.airQualityInfo);
+import { AQIApi } from "@/apis/AQIApi";
+
 
 // 污染物配置
 const pollutantConfigs = [
-  { name: 'PM2.5', key: 'pm2_5', unit: 'μg/m³', max: 75 },
+  { name: 'PM2.5', key: "pm2p5", unit: 'μg/m³', max: 75 },
   { name: 'PM10', key: 'pm10', unit: 'μg/m³', max: 150 },
   { name: 'SO₂', key: 'so2', unit: 'μg/m³', max: 80 },
   { name: 'NO₂', key: 'no2', unit: 'μg/m³', max: 100 },
-  { name: 'O₃', key: 'o3', unit: 'μg/m³', max: 200 }
+  { name: 'O₃', key: 'o3', unit: 'μg/m³', max: 200 },
+  { name: 'CO', key: 'co', unit: 'mg/m³', max: 200 },
 ]
 
-// 污染物列表
+// // 污染物列表
 const pollutantList = ref([])
 
-// 计算属性
+// // 计算属性
 const aqiPercentage = computed(() => {
   return Math.min(100, (airQualityIndex.value / 300) * 100);
 });
@@ -71,10 +70,43 @@ const aqiColor = computed(() => {
   return '#4B0082';
 });
 
-// 更新污染物数据的函数
+const airQualityIndex = ref(0)
+const currentCityInfo = JSON.parse(localStorage.getItem('current_city_info'))
+const lat = Number(currentCityInfo?.lat).toFixed(2)
+const lon = Number(currentCityInfo?.lon).toFixed(2)
+let weatherStore = []
+AQIApi.getAQIInfo(+lat, +lon).then(aqiInfo => {
+  airQualityIndex.value = aqiInfo.data.indexes[0].aqi
+  weatherStore = aqiInfo.data.pollutants
+  // weatherStore = [{code: "pm2p5", name: "PM 2.5", concentration: {value: 47.0, unit: "μg/m³"}}, ...]
+  pollutantList.value = pollutantConfigs.map(config => {
+    const value = weatherStore.find(item => item.code === config.key)?.concentration?.value || 0;
+    const percentage = Math.min(100, (value / config.max) * 100);
+
+    let color = '#67C23A'; // 绿色
+    if (percentage >= 80) {
+      color = '#F56C6C'; // 红色
+    } else if (percentage >= 60) {
+      color = '#E6A23C'; // 黄色
+    }
+
+    return {
+      ...config,
+      value,
+      percentage,
+      color
+    };
+  });
+})
+
+
+
+// // 更新污染物数据的函数
 const updatePollutants = () => {
   pollutantList.value = pollutantConfigs.map(config => {
     const value = weatherStore.airQualityInfo?.[0]?.components?.[config.key] || 0;
+    // weatherStore.value = [{code: "pm2p5", name: "PM 2.5", concentration: {value: 47.0, unit: "μg/m³"}}, ...]
+
     const percentage = Math.min(100, (value / config.max) * 100);
 
     let color = '#67C23A'; // 绿色
@@ -93,19 +125,14 @@ const updatePollutants = () => {
   });
 };
 
+
+
 // 生命周期钩子
 onMounted(() => {
-  updatePollutants();
+  // updatePollutants();
 });
 
-// 监听 AQIStore 数据变化
-watch(
-  () => weatherStore.airQualityInfo,
-  () => {
-    updatePollutants();
-  },
-  { deep: true }
-);
+
 </script>
 
 <style scoped>

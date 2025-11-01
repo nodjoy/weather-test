@@ -27,7 +27,7 @@ const weatherClassMap = {
 
 // 合并后的计算属性
 export function useWeatherNow(now) {
-  console.log("实时天气处理");
+  // console.log("实时天气处理");
 
   // 合并后的计算实时天气属性
   const enhancedWeatherNowData = computed(() => {
@@ -54,7 +54,7 @@ export function useWeatherNow(now) {
   return enhancedWeatherNowData
 }
 export function useWeatherHours(hours) {
-  console.log("小时天气处理");
+  // console.log("小时天气处理");
 
    // 合并后的计算小时天气属性
   const enhancedWeatherHoursData = computed(() => {
@@ -84,7 +84,7 @@ export function useWeatherHours(hours) {
   return enhancedWeatherHoursData
 }
 export function useWeatherDays(days) {
-  console.log("未来7天天气处理");
+  // console.log("未来7天天气处理");
 
   // 合并后的计算每天天气属性
   const enhancedWeatherDaysData = computed(() => {

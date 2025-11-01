@@ -4,7 +4,7 @@ export const formatTime = (apiTimeString) => {
   if (date instanceof Date && !isNaN(date)) {
     return date.toLocaleTimeString('zh-CN',{ hour: '2-digit', minute: '2-digit' })
   } else {
-    console.log('日期转换失败');
+    // console.log('日期转换失败');
   }
 }
 // 将日期字符串或Date对象转换为星期几

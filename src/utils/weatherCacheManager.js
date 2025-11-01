@@ -116,8 +116,8 @@ class WeatherCacheManager {
       // 检查计算属性是否存在
       // 直接检查 cityInfo 对象
       if (!cityStore.cityInfo || !cityStore.cityInfo.id) {
-        console.warn('❌ 城市数据未设置，请先选择城市')
-        console.log('🔍 cityInfo:', cityStore.cityInfo)
+        // console.warn('❌ 城市数据未设置，请先选择城市')
+        // console.log('🔍 cityInfo:', cityStore.cityInfo)
         throw new Error('城市数据未设置')
       }
 
@@ -125,7 +125,8 @@ class WeatherCacheManager {
       const currentLat = Number(Number(cityStore.cityInfo.lat).toFixed(2))
       const currentLon = Number(Number(cityStore.cityInfo.lon).toFixed(2))
 
-      console.log('📍 使用城市数据:', { cityId, currentLat, currentLon })
+      // console.log('📍 使用城市数据:', { cityId, currentLat, currentLon })
+      localStorage.setItem('current_city_info', JSON.stringify(cityStore.cityInfo))
       // 2. 获取天气数据 - 使用缓存
       const cacheKeys = {
         now: this.getCityCacheKey(this.CACHE_CONFIG.WEATHER_NOW.key, cityId),
@@ -141,7 +142,7 @@ class WeatherCacheManager {
       const cachedAqi = this.getCache(cacheKeys.aqi)
       // 如果所有天气数据都有缓存，直接使用
       if (cachedNow && cachedHours && cachedDays && cachedAqi) {
-        console.log('📦 使用缓存的天气数据');
+        // console.log('📦 使用缓存的天气数据');
 
 
         return {
@@ -155,7 +156,7 @@ class WeatherCacheManager {
         };
       }
 
-      console.log('🌤️ 获取最新天气数据');
+      // console.log('🌤️ 获取最新天气数据');
 
       // 3. 获取API数据（只获取缺失的数据）
       const promises = [];
@@ -169,9 +170,9 @@ class WeatherCacheManager {
       if (!cachedDays) {
         promises.push(apiCallbacks.getWeatherDaysInfo(cityId));
       }
-      if (!cachedAqi) {
-        promises.push(apiCallbacks.getAQINowInfo(currentLat, currentLon))
-      }
+      // if (!cachedAqi) {
+      //   promises.push(apiCallbacks.getAQINowInfo(currentLat, currentLon))
+      // }
 
       const results = await Promise.all(promises);
 
@@ -197,7 +198,7 @@ class WeatherCacheManager {
             if (weatherNowData?.value) {
               weatherData.now = weatherNowData.value;
               this.setCache(cacheKeys.now, weatherData.now, this.CACHE_CONFIG.WEATHER_NOW.ttl);
-              console.log('✅ 实时天气数据缓存成功');
+              // console.log('✅ 实时天气数据缓存成功');
 
             } else {
               console.warn('⚠️ 实时天气数据不完整:', {
@@ -271,7 +272,7 @@ class WeatherCacheManager {
       const cacheKey = this.getCityCacheKey(config.key, cityId);
       localStorage.removeItem(cacheKey);
     });
-    console.log(`🗑️ 城市 ${cityId} 的天气缓存已清除`);
+    // console.log(`🗑️ 城市 ${cityId} 的天气缓存已清除`);
   }
 
   /**
@@ -283,7 +284,7 @@ class WeatherCacheManager {
         localStorage.removeItem(key);
       }
     });
-    console.log('🗑️ 所有天气缓存已清除');
+    // console.log('🗑️ 所有天气缓存已清除');
   }
 
   /**

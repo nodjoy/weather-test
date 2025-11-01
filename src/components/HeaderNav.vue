@@ -47,15 +47,15 @@ async function handleSearch() {
 
   try {
     const data = await fetchCityAndWeather(cityName.value)
-    console.log('📊 所有数据:', data)
+    // console.log('📊 所有数据:', data)
 
     // 等待数据更新后检查
     await nextTick()
 
     if (hasWeatherData.value) {
-      console.log('✅ 数据加载完成，有天气数据')
+      // console.log('✅ 数据加载完成，有天气数据')
     } else {
-      console.log('⚠️ 数据加载完成，但没有天气数据')
+      // console.log('⚠️ 数据加载完成，但没有天气数据')
     }
 
   } catch (error) {
