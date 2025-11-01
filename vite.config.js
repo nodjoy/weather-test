@@ -68,9 +68,9 @@ export default defineConfig(({ mode }) => {
           rewrite: (path) => path.replace(/^\/openweather/, '/data/2.5')
         },
         '/api': {
-          target: `http://localhost:4000`,
-          // changeOrigin: true,
-          // rewrite: (path) => path.replace(/^\/api/, '')
+          target: `https://mock.nodjoy.com/weather-api`,
+          changeOrigin: true, // https 需要这个配置
+          rewrite: (path) => path.replace(/^\/api/, '')
         }
       }
     }

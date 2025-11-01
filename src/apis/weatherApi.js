@@ -9,7 +9,7 @@ export const weatherApi = {
       return Promise.reject(new Error('城市名称不能为空'))
     }
     return httpInstance({
-      url: '/api/v7/weather/now',
+      url: '/v7/weather/now',
       params: {
         location: locationId
       }
@@ -24,7 +24,7 @@ export const weatherApi = {
       return Promise.reject(new Error('城市名称不能为空'))
     }
     return httpInstance({
-      url: '/api/v7/weather/24h',
+      url: '/v7/weather/24h',
       params: {
         location: locationId
       }
@@ -38,7 +38,7 @@ export const weatherApi = {
       return Promise.reject(new Error('城市名称不能为空'))
     }
     return httpInstance({
-      url: '/api/v7/weather/7d',
+      url: '/v7/weather/7d',
       params: {
         location: locationId
       }

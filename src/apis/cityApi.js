@@ -10,7 +10,7 @@ export const cityApi = {
     }
     return httpInstance({
       // url: '/geo/v2/city/lookup',
-      url: '/api/geo/v2/city/lookup',
+      url: '/geo/v2/city/lookup',
       params: {
         location: location.trim()
       }

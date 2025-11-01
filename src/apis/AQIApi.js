@@ -8,7 +8,7 @@ export const AQIApi = {
       return Promise.reject(new Error('经纬度不能为空'))
     }
     return httpInstance({
-      url: `/api/airquality/v1/current/${lat}/${lon}`,
+      url: `/airquality/v1/current/${lat}/${lon}`,
       // url: '/air_pollution',
       // params: {
       //   lat: lat,
